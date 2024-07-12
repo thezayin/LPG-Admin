@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="ad_container_color">#F5F5F5</color>
+    <color name="ad_button_text_color">#FFFFFF</color>
+    <color name="ad_text_color">#FF000000</color>
+    <color name="ad_button_color">#8c52fe</color>
+    <color name="ad_tag_text_color">#F5F5F5</color>
+    <color name="ad_tag_color">#6FC8FB</color>
+
+
+    <color name="purple">#8c52fe</color>
+    <color name="brown_level_1">#7d5260</color>
+
+    <color name="yellow_level_1">#FFD9A000</color>
+
+    <color name="green_level_1">#015c4b</color>
+    <color name="green_level_2">#668076</color>
+
+    <color name="orange_level_1">#e3481a</color>
+
+    <color name="icon_color">#000000</color>
+    <color name="background">#B3FFFFFF</color>
+    <color name="splash_background">#122f51</color>
+    <color name="text_color">#485054</color>
+    <color name="text_color_light">#677278</color>
+    <color name="light_blue">#E6F0F7</color>
+    <color name="light_blue_level_1">#D6EAF3</color>
+    <color name="blue">#2960EC</color>
+
+    <color name="btn_primary">#6739D2</color>
+    <color name="ed_background">#F5F5F5</color>
+    <color name="un_selected">#9EA2B3</color>
+    <color name="onboarding_btn">#39B6D2</color>
+
+    <color name="yellow">#F6BE15</color>
+    <color name="light_yellow">#E9C16E</color>
+    <color name="light_yellow_level_1">#F6D9A5</color>
+    <color name="light_yellow_level_2">#EFD700</color>
+    <color name="light_yellow_level_3">#1CF2E915</color>
+
+    <color name="grey_level_2">#6B6F80</color>
+    <color name="grey">#777777</color>
+    <color name="grey_level_5">#DCDEE6</color>
+
+    <color name="green">#069952</color>
+    <color name="light_green">#E6FFF3</color>
+
+    <color name="red">#E62E2E</color>
+
+    <color name="light_purple">#F4F2FD</color>
+    <color name="light_purple_level_1">#E6E0F7</color>
+
+    //onboarding background gradient
+    <color name="color_starting">#00000000</color>
+    <color name="color_mid">#B3000000</color>
+    <color name="color_end">#000000</color>
+
+    <color name="semi_transparent">#80FFFFFF</color>
+    <color name="mid_transparent">#F2FFFFFF</color>
+</resources>

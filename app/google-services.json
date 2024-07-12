@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "159929828047",
+    "project_id": "safe-gass",
+    "storage_bucket": "safe-gass.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159929828047:android:3613b9fc18ca4bb5ff2dba",
+        "android_client_info": {
+          "package_name": "com.thezayin.lpg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnN9mJjellSWQ5bvwlF-813b3oviDZEEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159929828047:android:eae085e847897763ff2dba",
+        "android_client_info": {
+          "package_name": "com.thezayin.lpgadmin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnN9mJjellSWQ5bvwlF-813b3oviDZEEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

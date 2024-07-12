@@ -1,0 +1,154 @@
+[versions]
+afAndroidSdk = "6.13.0"
+agp = "8.3.2"
+androidSdk = "3.35.1"
+appUpdateKtx = "2.1.0"
+coilGif = "2.6.0"
+converterGson = "2.10.0"
+core = "1.10.2"
+firebaseAppcheckDebug = "18.0.0"
+firebaseAuthKtx = "23.0.0"
+firebaseBom = "33.1.1"
+firebaseDatabase = "21.0.0"
+firebaseFirestoreKtx = "25.0.0"
+firebaseInappmessagingDisplayVersion = "21.0.0"
+firebaseMessagingKtx = "24.0.0"
+firebaseMessagingVersion = "24.0.0"
+firebasePerfVersion = "21.0.1"
+gradle = "8.4.0"
+guava = "27.0.1-jre"
+hiltAndroid = "2.51"
+hiltNavigationCompose = "1.2.0"
+koin = "1.1.2"
+koin-version = "3.6.0-wasm-alpha2"
+koinAndroid = "3.5.3"
+kotlin = "1.9.22"
+coreKtx = "1.12.0"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+kotlinxSerializationJson = "1.6.2"
+kotlinxSerializationJsonVersion = "1.6.3"
+lottieCompose = "6.2.0"
+orgSerlize = "1.6.10"
+lifecycle = "2.7.0"
+activityCompose = "1.8.2"
+composeBom = "2024.03.00"
+ktor = "1.6.4"
+ktorSerialize = "1.6.4"
+googleServicesVersion = "4.4.1"
+firebaseAnalytics = "21.6.1"
+firebaseCrashlytics = "18.6.3"
+firebaseCrashlyticsGradle = "2.9.9"
+firebasePerf = "20.5.2"
+perfPlugin = "1.4.2"
+firebaseAppdistributionGradle = "4.2.0"
+firebaseMessaging = "20.1.7"
+firebaseInappmessagingDisplay = "20.4.1"
+firebaseConfig = "21.6.3"
+playServicesAds = "23.0.0"
+playServicesMeasurementApi = "21.6.2"
+slf4jApi = "2.0.5"
+slf4jSimple = "1.6.1"
+timber = "5.0.1"
+uiGraphicsAndroid = "1.6.8"
+userMessagingPlatform = "2.2.0"
+workRuntime = "2.9.0"
+room = "2.6.1"
+appcompat = "1.6.1"
+material = "1.11.0"
+accompanistNavigationAnimation = "0.34.0"
+animation = "1.6.7"
+jsoupVersion = "1.17.2"
+navigationCompose = "2.7.7"
+neumorphic = "0.0.6"
+opencvContrib = "4.5.3.0"
+skrapeit = "1.2.2"
+jetbrainsKotlinJvm = "1.9.22"
+
+[libraries]
+accompanist-navigation-animation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "accompanistNavigationAnimation" }
+androidx-animation = { module = "androidx.compose.animation:animation", version.ref = "animation" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-ui-graphics-android = { module = "androidx.compose.ui:ui-graphics-android", version.ref = "uiGraphicsAndroid" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilGif" }
+coil-gif = { module = "io.coil-kt:coil-gif", version.ref = "coilGif" }
+firebase-appcheck-debug = { module = "com.google.firebase:firebase-appcheck-debug", version.ref = "firebaseAppcheckDebug" }
+firebase-auth = { module = "com.google.firebase:firebase-auth", version.ref = "firebaseAuthKtx" }
+firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-database = { module = "com.google.firebase:firebase-database", version.ref = "firebaseDatabase" }
+firebase-firestore-ktx = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
+firebase-inappmessaging-display-v2100 = { module = "com.google.firebase:firebase-inappmessaging-display", version.ref = "firebaseInappmessagingDisplayVersion" }
+firebase-messaging-ktx = { module = "com.google.firebase:firebase-messaging-ktx", version.ref = "firebaseMessagingKtx" }
+firebase-perf-v2101 = { module = "com.google.firebase:firebase-perf", version.ref = "firebasePerfVersion" }
+firebase-storage-ktx = { module = "com.google.firebase:firebase-storage-ktx", version.ref = "firebaseDatabase" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+jsoup-jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoupVersion" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+androidx-lifecycle-common-java8 = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycle" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
+koin-androidx-navigation = { module = "io.insert-koin:koin-androidx-navigation", version.ref = "koin-version" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref ="koin" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
+koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin-version" }
+
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging-jvm", version.ref = "ktor" }
+ktor-client-serialize = { module = "io.ktor:ktor-client-serialization", version.ref = "ktorSerialize" }
+
+neumorphic = { module = "io.github.sridhar-sp:neumorphic", version.ref = "neumorphic" }
+opencv-contrib = { module = "com.quickbirdstudios:opencv-contrib", version.ref = "opencvContrib" }
+raamcosta-destination-ksp = { module = "io.github.raamcosta.compose-destinations:ksp", version.ref = "core" }
+raamcosta-destination-core = { module = "io.github.raamcosta.compose-destinations:core", version.ref = "core" }
+google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServicesVersion" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlytics" }
+firebase-crashlytics-gradle = { group = "com.google.firebase", name = "firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsGradle" }
+firebase-perf = { group = "com.google.firebase", name = "firebase-perf", version.ref = "firebasePerf" }
+perf-plugin = { group = "com.google.firebase", name = "perf-plugin", version.ref = "perfPlugin" }
+firebase-appdistribution-gradle = { group = "com.google.firebase", name = "firebase-appdistribution-gradle", version.ref = "firebaseAppdistributionGradle" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
+firebase-inappmessaging-display = { group = "com.google.firebase", name = "firebase-inappmessaging-display", version.ref = "firebaseInappmessagingDisplay" }
+firebase-config = { group = "com.google.firebase", name = "firebase-config", version.ref = "firebaseConfig" }
+skrapeit = { module = "it.skrape:skrapeit", version.ref = "skrapeit" }
+
+lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+user-messaging-platform = { module = "com.google.android.ump:user-messaging-platform", version.ref = "userMessagingPlatform" }
+play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "playServicesAds" }
+androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "workRuntime" }
+
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+serialization-json = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "orgSerlize" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
