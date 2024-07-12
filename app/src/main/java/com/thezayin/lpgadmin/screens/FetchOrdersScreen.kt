@@ -26,31 +26,25 @@ import org.koin.compose.koinInject
 
 @Composable
 @Destination
-fun FetchOrdersScreen(
-    navigator: DestinationsNavigator
-) {
+fun FetchOrdersScreen(navigator: DestinationsNavigator) {
     val viewModel: FetchOrdersViewModel = koinInject()
-    var checkNetwork by remember { mutableStateOf(false) }
-    val isLoading = viewModel.isLoading.collectAsState().value.isLoading
-    var isError = viewModel.isQueryError.collectAsState().value.isError
-    val errorMessage = viewModel.isQueryError.collectAsState().value.errorMessage
-    val list = viewModel.userOrders.collectAsState().value.list
-    val statusList = viewModel.orderStatusList.collectAsState().value.list
+
     val showDialog = remember { mutableStateOf(false) }
+    var checkNetwork by remember { mutableStateOf(false) }
+
+    val list = viewModel.userOrders.collectAsState().value.list
+    var isError = viewModel.isQueryError.collectAsState().value.isError
+    val isLoading = viewModel.isLoading.collectAsState().value.isLoading
+    val statusList = viewModel.orderStatusList.collectAsState().value.list
+    val errorMessage = viewModel.isQueryError.collectAsState().value.errorMessage
 
     GlassComponent()
 
-    if (checkNetwork) {
-        NetworkDialog(showDialog = { checkNetwork = it })
-    }
-
-    if (isLoading) {
-        LoadingDialog()
-    }
+    if (checkNetwork) { NetworkDialog(showDialog = { checkNetwork = it }) }
+    if (isLoading) { LoadingDialog() }
 
     if (isError) {
-        ErrorQueryDialog(
-            showDialog = { isError = it },
+        ErrorQueryDialog(showDialog = { isError = it },
             callback = { navigator.navigateUp() },
             error = errorMessage
         )
@@ -74,14 +68,8 @@ fun FetchOrdersScreen(
             )
         },
     ) { padding ->
-        Column(
-            modifier = Modifier.padding(padding)
-        ) {
-            FetchOrdersList(
-                modifier = Modifier,
-                list = list,
-                onClick = { showDialog.value = true }
-            )
+        Column(modifier = Modifier.padding(padding)) {
+            FetchOrdersList(modifier = Modifier, list = list, onClick = { showDialog.value = true })
         }
     }
 }

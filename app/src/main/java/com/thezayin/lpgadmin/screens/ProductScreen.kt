@@ -28,24 +28,21 @@ import org.koin.compose.koinInject
 
 @Composable
 @Destination
-fun ProductScreen(
-    navigator: DestinationsNavigator
-) {
+fun ProductScreen(navigator: DestinationsNavigator) {
     val viewModel: AdminProductViewModel = koinInject()
+
     var checkNetwork by remember { mutableStateOf(false) }
-    val productList = viewModel.getAdminProducts.collectAsState().value.list
-    val isLoading = viewModel.isLoading.collectAsState().value.isLoading
+
     var isError = viewModel.isQueryError.collectAsState().value.isError
+    val isLoading = viewModel.isLoading.collectAsState().value.isLoading
+    val productList = viewModel.getAdminProducts.collectAsState().value.list
     val errorMessage = viewModel.isQueryError.collectAsState().value.errorMessage
 
     GlassComponent()
 
-    if (checkNetwork) {
-        NetworkDialog(showDialog = { checkNetwork = it })
-    }
-    if (isLoading) {
-        LoadingDialog()
-    }
+    if (checkNetwork) { NetworkDialog(showDialog = { checkNetwork = it }) }
+    if (isLoading) { LoadingDialog() }
+
     if (isError) {
         ErrorQueryDialog(
             showDialog = { isError = it },

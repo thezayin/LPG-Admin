@@ -1,8 +1,8 @@
 package com.thezayin.orders.domain.usecase
 
-import com.thezayin.orders.domain.repository.OrderStatusRepository
 import com.thezayin.entities.OrderStatusModel
 import com.thezayin.framework.utils.Response
+import com.thezayin.orders.domain.repository.OrderStatusRepository
 import kotlinx.coroutines.flow.Flow
 
 interface GetStatusList : suspend () -> Flow<Response<List<OrderStatusModel>>>

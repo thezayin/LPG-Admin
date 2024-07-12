@@ -4,10 +4,10 @@ import android.app.Application
 import com.thezayin.analytics.di.analyticsHelperModule
 import com.thezayin.di.addProductModule
 import com.thezayin.di.appModule
-import com.thezayin.di.homeModule
-import com.thezayin.di.productUpdateModule
-import com.thezayin.di.productModule
 import com.thezayin.di.getUserOrdersModule
+import com.thezayin.di.homeModule
+import com.thezayin.di.productModule
+import com.thezayin.di.productUpdateModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

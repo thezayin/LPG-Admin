@@ -29,23 +29,20 @@ import org.koin.compose.koinInject
 @Destination
 fun HomeScreen(navigator: DestinationsNavigator) {
     val viewModel: AdminHomeViewModel = koinInject()
+
     var checkNetwork by remember { mutableStateOf(false) }
+
     val isLoading = viewModel.isLoading.collectAsState().value.isLoading
     val optionList = viewModel.adminHomeOptions.collectAsState().value.list
-    if (checkNetwork) {
-        NetworkDialog(showDialog = { checkNetwork = it })
-    }
 
-    if (isLoading) {
-        LoadingDialog()
-    }
-
+    if (checkNetwork) { NetworkDialog(showDialog = { checkNetwork = it }) }
+    if (isLoading) { LoadingDialog() }
     GlassComponent()
+
     Scaffold(
         modifier = Modifier
             .navigationBarsPadding(),
         containerColor = colorResource(id = com.thezayin.core.R.color.semi_transparent),
-
         topBar = {
             AdminHomeTopBar(modifier = Modifier, backClick = {
 //                navigator.navigate(
@@ -54,9 +51,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
             })
         },
     ) { padding ->
-        Column(
-            modifier = Modifier.padding(padding)
-        ) {
+        Column(modifier = Modifier.padding(padding)) {
             AdminMenu(
                 modifier = Modifier,
                 list = optionList,

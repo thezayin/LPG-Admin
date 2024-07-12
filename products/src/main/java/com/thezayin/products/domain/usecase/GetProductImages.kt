@@ -1,9 +1,9 @@
 package com.thezayin.products.domain.usecase
 
-import com.thezayin.products.domain.repository.GetProductImagesRepository
 import com.thezayin.entities.HomeProductsModel
 import com.thezayin.entities.ProductModel
 import com.thezayin.framework.utils.Response
+import com.thezayin.products.domain.repository.GetProductImagesRepository
 import kotlinx.coroutines.flow.Flow
 
 interface GetProductImages :

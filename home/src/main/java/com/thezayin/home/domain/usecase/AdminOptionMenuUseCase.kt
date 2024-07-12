@@ -1,8 +1,8 @@
 package com.thezayin.home.domain.usecase
 
-import com.thezayin.home.domain.repository.AdminOptionMenuRepository
 import com.thezayin.entities.AdminOptionMenuModel
 import com.thezayin.framework.utils.Response
+import com.thezayin.home.domain.repository.AdminOptionMenuRepository
 import kotlinx.coroutines.flow.Flow
 
 interface AdminOptionMenuUseCase : suspend () -> Flow<Response<List<AdminOptionMenuModel>>>

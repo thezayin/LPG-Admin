@@ -1,8 +1,8 @@
 package com.thezayin.productdetails.domain.usecase
 
 import android.net.Uri
-import com.thezayin.productdetails.domain.repository.ProDetailsRepository
 import com.thezayin.framework.utils.Response
+import com.thezayin.productdetails.domain.repository.ProDetailsRepository
 import kotlinx.coroutines.flow.Flow
 
 interface UpdateImage : suspend (Uri) -> Flow<Response<String>>
