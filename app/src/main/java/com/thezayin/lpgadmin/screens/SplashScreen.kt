@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,7 +25,7 @@ import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.thezayin.common.component.GlassComponent
 import com.thezayin.lpgadmin.R
-import com.thezayin.lpgadmin.destinations.HomeScreenDestination
+import com.thezayin.lpgadmin.screens.destinations.HomeScreenDestination
 import kotlinx.coroutines.delay
 
 @SuppressLint("OpaqueUnitKey")
@@ -40,6 +41,7 @@ fun SplashScreen(navController: DestinationsNavigator) {
 
     Box(
         modifier = Modifier
+            .navigationBarsPadding()
             .background(color = colorResource(id = com.thezayin.core.R.color.semi_transparent))
             .fillMaxSize()
     ) {

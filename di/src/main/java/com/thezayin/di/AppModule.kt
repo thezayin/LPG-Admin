@@ -10,10 +10,14 @@ import com.thezayin.addproducts.domain.usecase.AddProductUseCaseImpl
 import com.thezayin.addproducts.domain.usecase.UploadImage
 import com.thezayin.addproducts.domain.usecase.UploadImageImpl
 import com.thezayin.addproducts.presentation.AddProductViewModel
+import com.thezayin.common.viewmodel.MainViewModel
+import com.thezayin.framework.remote.RemoteConfig
 import com.thezayin.home.data.AdminOptionMenuRepositoryImpl
 import com.thezayin.home.domain.repository.AdminOptionMenuRepository
 import com.thezayin.home.domain.usecase.AdminOptionMenuUseCase
 import com.thezayin.home.domain.usecase.AdminOptionMenuUseCaseImpl
+import com.thezayin.home.domain.usecase.ProductOptionMenu
+import com.thezayin.home.domain.usecase.ProductOptionMenuImpl
 import com.thezayin.home.presentation.AdminHomeViewModel
 import com.thezayin.orders.data.FetchOrdersRepositoryImpl
 import com.thezayin.orders.data.OrderStatusRepositoryImpl
@@ -21,11 +25,23 @@ import com.thezayin.orders.domain.repository.FetchOrdersRepository
 import com.thezayin.orders.domain.repository.OrderStatusRepository
 import com.thezayin.orders.domain.usecase.FetchOrders
 import com.thezayin.orders.domain.usecase.FetchOrdersImpl
+import com.thezayin.orders.domain.usecase.GetCancelledOrders
+import com.thezayin.orders.domain.usecase.GetCancelledOrdersImpl
+import com.thezayin.orders.domain.usecase.GetConfirmedOrders
+import com.thezayin.orders.domain.usecase.GetConfirmedOrdersImpl
+import com.thezayin.orders.domain.usecase.GetDeliveredOrders
+import com.thezayin.orders.domain.usecase.GetDeliveredOrdersImpl
+import com.thezayin.orders.domain.usecase.GetNewOrders
+import com.thezayin.orders.domain.usecase.GetNewOrdersImpl
+import com.thezayin.orders.domain.usecase.GetOrderById
+import com.thezayin.orders.domain.usecase.GetOrderByIdImpl
+import com.thezayin.orders.domain.usecase.GetPendingOrders
+import com.thezayin.orders.domain.usecase.GetPendingOrdersImpl
 import com.thezayin.orders.domain.usecase.GetStatusList
 import com.thezayin.orders.domain.usecase.GetStatusListImpl
 import com.thezayin.orders.domain.usecase.UpdateOrderStatus
 import com.thezayin.orders.domain.usecase.UpdateOrderStatusImpl
-import com.thezayin.adminorders.presentation.FetchOrdersViewModel
+import com.thezayin.orders.presentation.FetchOrdersViewModel
 import com.thezayin.productdetails.data.ProDetailsRepositoryImpl
 import com.thezayin.productdetails.domain.repository.ProDetailsRepository
 import com.thezayin.productdetails.domain.usecase.DeleteAdminProduct
@@ -44,7 +60,6 @@ import com.thezayin.products.domain.usecase.GetAdminProductImpl
 import com.thezayin.products.domain.usecase.GetProductImages
 import com.thezayin.products.domain.usecase.GetProductImagesImpl
 import com.thezayin.products.presentation.AdminProductViewModel
-import com.thezayin.framework.remote.RemoteConfig
 import kotlinx.serialization.json.Json
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.factoryOf
@@ -52,15 +67,14 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
-
 /**
  * Admin Modules
  */
 val appModule = module {
+    singleOf(::MainViewModel)
     single { Json { ignoreUnknownKeys = true } }
     singleOf(::RemoteConfig)
 }
-
 val getUserOrdersModule = module {
     viewModelOf(::FetchOrdersViewModel)
     factoryOf(::FetchOrdersRepositoryImpl) bind FetchOrdersRepository::class
@@ -68,8 +82,13 @@ val getUserOrdersModule = module {
     factoryOf(::GetStatusListImpl) bind GetStatusList::class
     factoryOf(::UpdateOrderStatusImpl) bind UpdateOrderStatus::class
     factoryOf(::FetchOrdersImpl) bind FetchOrders::class
+    factoryOf(::GetOrderByIdImpl) bind GetOrderById::class
+    factoryOf(::GetCancelledOrdersImpl) bind GetCancelledOrders::class
+    factoryOf(::GetConfirmedOrdersImpl) bind GetConfirmedOrders::class
+    factoryOf(::GetDeliveredOrdersImpl) bind GetDeliveredOrders::class
+    factoryOf(::GetNewOrdersImpl) bind GetNewOrders::class
+    factoryOf(::GetPendingOrdersImpl) bind GetPendingOrders::class
 }
-
 val productUpdateModule = module {
     viewModelOf(::AdminProDetailsViewModel)
     factoryOf(::ProDetailsRepositoryImpl) bind ProDetailsRepository::class
@@ -77,7 +96,6 @@ val productUpdateModule = module {
     factoryOf(::UpdateAdminProductIml) bind UpdateAdminProduct::class
     factoryOf(::UpdateImageImpl) bind UpdateImage::class
 }
-
 val productModule = module {
     viewModelOf(::AdminProductViewModel)
     factoryOf(::AdminProductRepositoryImpl) bind AdminProductRepository::class
@@ -85,14 +103,12 @@ val productModule = module {
     factoryOf(::GetProductImagesRepositoryImpl) bind GetProductImagesRepository::class
     factoryOf(::GetAdminProductImpl) bind GetAdminProduct::class
 }
-
-
 val homeModule = module {
     viewModelOf(::AdminHomeViewModel)
     factoryOf(::AdminOptionMenuRepositoryImpl) bind AdminOptionMenuRepository::class
     factoryOf(::AdminOptionMenuUseCaseImpl) bind AdminOptionMenuUseCase::class
+    factoryOf(::ProductOptionMenuImpl) bind ProductOptionMenu::class
 }
-
 val addProductModule = module {
     viewModelOf(::AddProductViewModel)
     single { FirebaseFirestore.getInstance() }
@@ -102,4 +118,3 @@ val addProductModule = module {
     factoryOf(::AddProductUseCaseImpl) bind AddProductUseCase::class
     factoryOf(::UploadImageImpl) bind UploadImage::class
 }
-

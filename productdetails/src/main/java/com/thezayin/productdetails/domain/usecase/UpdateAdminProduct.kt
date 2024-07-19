@@ -1,7 +1,7 @@
 package com.thezayin.productdetails.domain.usecase
 
-import com.thezayin.productdetails.domain.repository.ProDetailsRepository
 import com.thezayin.framework.utils.Response
+import com.thezayin.productdetails.domain.repository.ProDetailsRepository
 import kotlinx.coroutines.flow.Flow
 
 interface UpdateAdminProduct :

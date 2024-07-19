@@ -51,17 +51,19 @@ fun ProDetailsScreen(
     imageUri: Uri
 ) {
     val viewModel: AdminProDetailsViewModel = koinInject()
+
     val image = viewModel.image.collectAsState().value.image
+    var isError = viewModel.isQueryError.collectAsState().value.isError
+    val isLoading = viewModel.isLoading.collectAsState().value.isLoading
+    val errorMessage = viewModel.isQueryError.collectAsState().value.errorMessage
+    var isSuccessful = viewModel.isQuerySuccessful.collectAsState().value.isSuccess
+
+    val type = remember { mutableStateOf(TextFieldValue()) }
+    var checkField by remember { mutableStateOf(false) }
     var checkNetwork by remember { mutableStateOf(false) }
     val name = remember { mutableStateOf(TextFieldValue(name)) }
-    val description = remember { mutableStateOf(TextFieldValue(description)) }
-    val type = remember { mutableStateOf(TextFieldValue()) }
     val price = remember { mutableStateOf(TextFieldValue(price)) }
-    var checkField by remember { mutableStateOf(false) }
-    val isLoading = viewModel.isLoading.collectAsState().value.isLoading
-    var isSuccessful = viewModel.isQuerySuccessful.collectAsState().value.isSuccess
-    var isError = viewModel.isQueryError.collectAsState().value.isError
-    val errorMessage = viewModel.isQueryError.collectAsState().value.errorMessage
+    val description = remember { mutableStateOf(TextFieldValue(description)) }
 
     GlassComponent()
 
@@ -74,13 +76,9 @@ fun ProDetailsScreen(
         }
     )
 
-    if (checkNetwork) {
-        NetworkDialog(showDialog = { checkNetwork = it })
-    }
-
-    if (isLoading) {
-        LoadingDialog()
-    }
+    if (checkNetwork) { NetworkDialog(showDialog = { checkNetwork = it }) }
+    if (checkField) { FieldsDialog(showDialog = { checkField = it }) }
+    if (isLoading) { LoadingDialog() }
 
     if (isError) {
         ErrorQueryDialog(
@@ -94,10 +92,6 @@ fun ProDetailsScreen(
         SuccessQueryDialog(
             showDialog = { isSuccessful = it },
             callback = { navigator.navigateUp() })
-    }
-
-    if (checkField) {
-        FieldsDialog(showDialog = { checkField = it })
     }
 
     Scaffold(

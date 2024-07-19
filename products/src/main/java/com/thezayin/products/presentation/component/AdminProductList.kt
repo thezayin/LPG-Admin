@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.thezayin.entities.HomeProductsModel
-import com.thezayin.products.presentation.component.ProductList
 
 @Composable
 fun AdminProductList(

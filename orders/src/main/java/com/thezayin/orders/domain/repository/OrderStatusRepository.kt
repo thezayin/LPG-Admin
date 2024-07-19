@@ -5,6 +5,6 @@ import com.thezayin.framework.utils.Response
 import kotlinx.coroutines.flow.Flow
 
 interface OrderStatusRepository {
-    fun getStatus(): Flow<Response<List<OrderStatusModel>>>
-    fun updateStatus(status: String): Flow<Response<Boolean>>
+    fun getStatus(): Flow<Response<List<String>>>
+    fun updateStatus(id:String, status: String): Flow<Response<Boolean>>
 }

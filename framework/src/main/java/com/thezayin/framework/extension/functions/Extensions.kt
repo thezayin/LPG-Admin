@@ -30,8 +30,7 @@ fun Context.checkForInternet(): Boolean {
     }
 }
 
-fun Context.makeCall() {
-    val number = "03033009802"
+fun Context.makeCall(number: String) {
     val intent = Intent(Intent.ACTION_DIAL)
     intent.setData(Uri.parse("tel:$number"))
     this.startActivity(intent)

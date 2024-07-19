@@ -25,7 +25,7 @@ fun AdminTopBar(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(top = 40.dp)
+            .padding(top = 80.dp)
             .padding(horizontal = 20.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically

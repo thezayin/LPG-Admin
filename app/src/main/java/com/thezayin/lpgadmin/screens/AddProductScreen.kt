@@ -37,23 +37,23 @@ import org.koin.compose.koinInject
 
 @Composable
 @Destination
-fun AddProductScreen(
-    navigator: DestinationsNavigator
-) {
+fun AddProductScreen(navigator: DestinationsNavigator) {
     val viewModel: AddProductViewModel = koinInject()
-    var checkNetwork by remember { mutableStateOf(false) }
+
     val name = remember { mutableStateOf(TextFieldValue()) }
-    val description = remember { mutableStateOf(TextFieldValue()) }
     val type = remember { mutableStateOf(TextFieldValue()) }
     val price = remember { mutableStateOf(TextFieldValue()) }
     var checkField by remember { mutableStateOf(false) }
-    val isLoading = viewModel.isLoading.collectAsState().value.isLoading
-    var isSuccessful = viewModel.isQuerySuccessful.collectAsState().value.isSuccess
-    var isError = viewModel.isQueryError.collectAsState().value.isError
-    val errorMessage = viewModel.isQueryError.collectAsState().value.errorMessage
+    var checkNetwork by remember { mutableStateOf(false) }
+    val imageSelected = remember { mutableStateOf(false) }
+    val description = remember { mutableStateOf(TextFieldValue()) }
 
     val imageUri = viewModel.image.collectAsState().value.image
-    val imageSelected = remember { mutableStateOf(false) }
+    var isError = viewModel.isQueryError.collectAsState().value.isError
+    val isLoading = viewModel.isLoading.collectAsState().value.isLoading
+    val errorMessage = viewModel.isQueryError.collectAsState().value.errorMessage
+    var isSuccessful = viewModel.isQuerySuccessful.collectAsState().value.isSuccess
+
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),
         onResult = { uri ->
@@ -67,11 +67,9 @@ fun AddProductScreen(
     if (checkNetwork) {
         NetworkDialog(showDialog = { checkNetwork = it })
     }
-
     if (checkField) {
         FieldsDialog(showDialog = { checkField = it })
     }
-
     if (isLoading) {
         LoadingDialog()
     }
@@ -125,11 +123,7 @@ fun AddProductScreen(
                 AddImage(
                     imageUri = imageUri,
                     imageSelected = imageSelected,
-                ) {
-                    launcher.launch(
-                        PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
-                    )
-                }
+                ) { launcher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }
                 AddProductDetails(
                     name = name,
                     description = description,
