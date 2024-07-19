@@ -19,8 +19,8 @@ import com.thezayin.common.component.GlassComponent
 import com.thezayin.common.dialogs.ErrorQueryDialog
 import com.thezayin.common.dialogs.LoadingDialog
 import com.thezayin.common.dialogs.NetworkDialog
-import com.thezayin.lpgadmin.destinations.AddProductScreenDestination
-import com.thezayin.lpgadmin.destinations.ProDetailsScreenDestination
+import com.thezayin.lpgadmin.screens.destinations.AddProductScreenDestination
+import com.thezayin.lpgadmin.screens.destinations.ProDetailsScreenDestination
 import com.thezayin.products.presentation.AdminProductViewModel
 import com.thezayin.products.presentation.component.AddProductButton
 import com.thezayin.products.presentation.component.AdminProductList

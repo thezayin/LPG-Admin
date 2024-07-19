@@ -1,18 +1,20 @@
-package com.thezayin.adminorders.presentation.component
+package com.thezayin.orders.presentation.component
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.thezayin.entities.OrderModel
+import com.thezayin.entities.OrderStatusModel
 
 @Composable
 fun FetchOrdersList(
     modifier: Modifier,
     list: List<OrderModel>,
-    onClick: () -> Unit
+    callBack: (OrderModel) -> Unit,
 ) {
 
     LazyColumn(
@@ -26,7 +28,7 @@ fun FetchOrdersList(
         }) { position ->
             FetchOrdersDetails(
                 order = list[position],
-                onClick = { onClick() }
+                callBack = { callBack(it) },
             )
         }
     }

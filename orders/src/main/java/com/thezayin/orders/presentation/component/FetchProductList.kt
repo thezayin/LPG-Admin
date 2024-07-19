@@ -1,4 +1,4 @@
-package com.thezayin.adminorders.presentation.component
+package com.thezayin.orders.presentation.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

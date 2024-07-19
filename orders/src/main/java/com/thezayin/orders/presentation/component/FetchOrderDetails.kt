@@ -1,4 +1,4 @@
-package com.thezayin.adminorders.presentation.component
+package com.thezayin.orders.presentation.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
@@ -29,24 +30,30 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.thezayin.core.R
 import com.thezayin.entities.OrderModel
+import com.thezayin.framework.extension.functions.makeCall
 
 @Composable
 fun FetchOrdersDetails(
     order: OrderModel?,
-    onClick: () -> Unit
+    callBack: (OrderModel) -> Unit,
 ) {
+    val context = LocalContext.current
     Box(
         modifier = Modifier
             .padding(top = 10.dp, bottom = 10.dp)
             .clip(shape = RoundedCornerShape(16.dp))
-            .background(color = colorResource(id = com.thezayin.core.R.color.semi_transparent))
+            .background(color = colorResource(id = R.color.semi_transparent))
             .fillMaxWidth()
     ) {
         Column(
             modifier = Modifier
                 .heightIn(min = 250.dp, max = 700.dp)
                 .fillMaxWidth()
+                .clickable {
+                    callBack(order!!)
+                }
                 .padding(horizontal = 20.dp),
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.End
@@ -69,27 +76,24 @@ fun FetchOrdersDetails(
                     ) {
                         Text(
                             text = order?.orderTime + " " + order?.orderDate,
-                            color = colorResource(id = com.thezayin.core.R.color.black),
+                            color = colorResource(id = R.color.black),
                             fontSize = 16.sp,
-                            fontFamily = FontFamily(Font(com.thezayin.core.R.font.noto_sans_bold)),
+                            fontFamily = FontFamily(Font(R.font.noto_sans_bold)),
                         )
                         Card(
                             modifier = Modifier
-                                .padding(bottom = 10.dp)
-                                .clickable {
-                                    onClick()
-                                },
+                                .padding(bottom = 10.dp),
                             shape = RoundedCornerShape(40.dp),
                             colors = CardDefaults.cardColors(
-                                colorResource(id = com.thezayin.core.R.color.black)
+                                colorResource(id = R.color.black)
                             )
                         ) {
                             Text(
                                 text = order?.orderStatus ?: "pending",
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.Medium,
-                                fontFamily = FontFamily(Font(com.thezayin.core.R.font.noto_sans_bold)),
-                                color = colorResource(id = com.thezayin.core.R.color.white),
+                                fontFamily = FontFamily(Font(R.font.noto_sans_bold)),
+                                color = colorResource(id = R.color.white),
                                 modifier = Modifier.padding(
                                     vertical = 4.dp, horizontal = 12.dp
                                 )
@@ -99,31 +103,31 @@ fun FetchOrdersDetails(
 
                     Text(
                         text = order?.name ?: "name",
-                        color = colorResource(id = com.thezayin.core.R.color.black),
+                        color = colorResource(id = R.color.black),
                         fontSize = 16.sp,
-                        fontFamily = FontFamily(Font(com.thezayin.core.R.font.noto_sans_bold)),
+                        fontFamily = FontFamily(Font(R.font.noto_sans_bold)),
                     )
 
 
                     Text(
                         text = order?.phoneNumber ?: "03011001111",
-                        color = colorResource(id = com.thezayin.core.R.color.black),
+                        color = colorResource(id = R.color.black),
                         fontSize = 16.sp,
-                        fontFamily = FontFamily(Font(com.thezayin.core.R.font.noto_sans_bold)),
+                        fontFamily = FontFamily(Font(R.font.noto_sans_bold)),
                     )
 
                     Text(
                         text = order?.address ?: "Islamabad",
-                        color = colorResource(id = com.thezayin.core.R.color.black),
+                        color = colorResource(id = R.color.black),
                         fontSize = 16.sp,
-                        fontFamily = FontFamily(Font(com.thezayin.core.R.font.noto_sans_bold)),
+                        fontFamily = FontFamily(Font(R.font.noto_sans_bold)),
                     )
                     Text(
                         text = "Orders",
-                        color = colorResource(id = com.thezayin.core.R.color.black),
+                        color = colorResource(id = R.color.black),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium,
-                        fontFamily = FontFamily(Font(com.thezayin.core.R.font.noto_sans_italic)),
+                        fontFamily = FontFamily(Font(R.font.noto_sans_italic)),
                     )
                     FetchProductList(orders = order!!.orders!!)
                 }
@@ -133,9 +137,9 @@ fun FetchOrdersDetails(
             ) {
                 Text(
                     text = "Total: ${order?.totalAmount ?: "0"}Rs.",
-                    color = colorResource(id = com.thezayin.core.R.color.black),
+                    color = colorResource(id = R.color.black),
                     fontSize = 16.sp,
-                    fontFamily = FontFamily(Font(com.thezayin.core.R.font.noto_sans_bold)),
+                    fontFamily = FontFamily(Font(R.font.noto_sans_bold)),
                 )
             }
             Row(
@@ -146,24 +150,27 @@ fun FetchOrdersDetails(
                         .width(100.dp)
                         .height(40.dp),
                     colors = CardDefaults.cardColors(
-                        containerColor = colorResource(id = com.thezayin.core.R.color.black)
+                        containerColor = colorResource(id = R.color.black)
                     )
                 ) {
                     Row(
                         modifier = Modifier
                             .padding(5.dp)
+                            .clickable {
+                                order?.phoneNumber?.let { context.makeCall(number = it) }
+                            }
                             .fillMaxSize(),
                         horizontalArrangement = Arrangement.Center,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
                             text = "Call",
-                            color = colorResource(id = com.thezayin.core.R.color.white),
+                            color = colorResource(id = R.color.white),
                             fontSize = 16.sp,
-                            fontFamily = FontFamily(Font(com.thezayin.core.R.font.noto_sans_bold)),
+                            fontFamily = FontFamily(Font(R.font.noto_sans_bold)),
                         )
                         Image(
-                            painter = painterResource(id = com.thezayin.core.R.drawable.ic_call_white),
+                            painter = painterResource(id = R.drawable.ic_call_white),
                             contentDescription = null,
                             modifier = Modifier
                                 .size(25.dp)

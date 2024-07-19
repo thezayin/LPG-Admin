@@ -1,6 +1,6 @@
 package com.thezayin.entities
 
 data class OrderStatusModel(
-    val id: String? = null,
+    val id: Int? = null,
     val status: String? = null
 )

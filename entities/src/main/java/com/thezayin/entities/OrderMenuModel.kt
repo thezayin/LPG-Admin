@@ -1,6 +1,6 @@
 package com.thezayin.entities
 
-data class AdminOptionMenuModel(
+data class OrderMenuModel(
     val id: Int,
     val title: String,
 )

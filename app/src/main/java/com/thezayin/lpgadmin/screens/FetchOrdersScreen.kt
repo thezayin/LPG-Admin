@@ -14,48 +14,47 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import com.thezayin.adminorders.presentation.FetchOrdersViewModel
-import com.thezayin.adminorders.presentation.component.FetchOrdersList
-import com.thezayin.adminorders.presentation.component.UpdateStatus
 import com.thezayin.common.component.AdminTopBar
 import com.thezayin.common.component.GlassComponent
 import com.thezayin.common.dialogs.ErrorQueryDialog
 import com.thezayin.common.dialogs.LoadingDialog
 import com.thezayin.common.dialogs.NetworkDialog
+import com.thezayin.common.viewmodel.MainViewModel
+import com.thezayin.lpgadmin.screens.destinations.OrderDetailScreenDestination
+import com.thezayin.orders.presentation.FetchOrdersViewModel
+import com.thezayin.orders.presentation.component.FetchOrdersList
 import org.koin.compose.koinInject
 
 @Composable
 @Destination
 fun FetchOrdersScreen(navigator: DestinationsNavigator) {
     val viewModel: FetchOrdersViewModel = koinInject()
+    val mainViewModel: MainViewModel = koinInject()
 
-    val showDialog = remember { mutableStateOf(false) }
     var checkNetwork by remember { mutableStateOf(false) }
 
     val list = viewModel.userOrders.collectAsState().value.list
     var isError = viewModel.isQueryError.collectAsState().value.isError
     val isLoading = viewModel.isLoading.collectAsState().value.isLoading
-    val statusList = viewModel.orderStatusList.collectAsState().value.list
     val errorMessage = viewModel.isQueryError.collectAsState().value.errorMessage
 
     GlassComponent()
 
-    if (checkNetwork) { NetworkDialog(showDialog = { checkNetwork = it }) }
-    if (isLoading) { LoadingDialog() }
+    if (checkNetwork) {
+        NetworkDialog(showDialog = { checkNetwork = it })
+    }
+    if (isLoading) {
+        LoadingDialog()
+    }
 
     if (isError) {
-        ErrorQueryDialog(showDialog = { isError = it },
+        ErrorQueryDialog(
+            showDialog = { isError = it },
             callback = { navigator.navigateUp() },
             error = errorMessage
         )
     }
 
-    if (showDialog.value) {
-        UpdateStatus(onDismissRequest = {
-            viewModel.updateStatus(it.status!!)
-            showDialog.value = false
-        }, orderStatusModel = statusList)
-    }
 
     Scaffold(
         modifier = Modifier.navigationBarsPadding(),
@@ -69,7 +68,14 @@ fun FetchOrdersScreen(navigator: DestinationsNavigator) {
         },
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
-            FetchOrdersList(modifier = Modifier, list = list, onClick = { showDialog.value = true })
+            FetchOrdersList(
+                modifier = Modifier,
+                list = list,
+                callBack = {orderModel->
+                    mainViewModel.updateOrder(orderModel)
+                    navigator.navigate(OrderDetailScreenDestination)
+                },
+            )
         }
     }
 }

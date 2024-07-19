@@ -41,6 +41,7 @@ dependencies {
     implementation(project(":orders"))
     implementation(project(":productdetails"))
     implementation(project(":products"))
+    implementation(project(":common"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
