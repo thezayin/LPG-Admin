@@ -26,6 +26,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.thezayin.common.component.GlassComponent
 import com.thezayin.lpgadmin.R
 import com.thezayin.lpgadmin.screens.destinations.HomeScreenDestination
+import com.thezayin.lpgadmin.screens.destinations.LoginScreenDestination
 import kotlinx.coroutines.delay
 
 @SuppressLint("OpaqueUnitKey")
@@ -36,7 +37,7 @@ fun SplashScreen(navController: DestinationsNavigator) {
     GlassComponent()
     LaunchedEffect(Unit) {
         delay(5000L)
-        navController.navigate(HomeScreenDestination)
+        navController.navigate(LoginScreenDestination)
     }
 
     Box(
