@@ -3,13 +3,14 @@ package com.thezayin.products.presentation.component
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -41,7 +42,7 @@ fun ProductList(
             .clip(shape = RoundedCornerShape(16.dp))
             .background(color = colorResource(id = com.thezayin.core.R.color.semi_transparent))
             .fillMaxWidth()
-            .height(150.dp)
+            .heightIn(min = 160.dp, max = 400.dp)
     ) {
         Row(
             modifier = Modifier
@@ -62,40 +63,36 @@ fun ProductList(
             )
             Column(
                 modifier = Modifier
+                    .fillMaxWidth()
                     .padding(start = 20.dp)
             ) {
+                Image(
+                    painter = painterResource(id = com.thezayin.core.R.drawable.ic_edit),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .align(Alignment.End)
+                        .size(20.dp)
+                        .clickable {
+                            onClick(product)
+                        },
+                )
+                Spacer(modifier = Modifier.height(15.dp))
                 Text(
                     text = product.name ?: "Product Name",
                     color = colorResource(id = com.thezayin.core.R.color.black),
                     fontSize = 16.sp,
                     fontFamily = FontFamily(Font(com.thezayin.core.R.font.noto_sans_bold)),
                 )
+                Spacer(modifier = Modifier.height(5.dp))
                 Text(
                     text = product.description ?: "Product Description",
                     color = colorResource(id = com.thezayin.core.R.color.black),
                     fontSize = 12.sp,
                     fontFamily = FontFamily(Font(com.thezayin.core.R.font.noto_sans_regular)),
                 )
-            }
-            Column(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .fillMaxWidth()
-                    .padding(start = 20.dp, bottom = 20.dp, top = 20.dp),
-                verticalArrangement = Arrangement.SpaceBetween,
-                horizontalAlignment = Alignment.End
-            ) {
-                Image(
-                    painter = painterResource(id = com.thezayin.core.R.drawable.ic_edit),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .padding(end = 20.dp)
-                        .size(25.dp)
-                        .clickable {
-                            onClick(product)
-                        },
-                )
+                Spacer(modifier = Modifier.height(5.dp))
                 Text(
+                    modifier = Modifier.align(Alignment.End),
                     text = "Rs: ${product.price}",
                     color = colorResource(id = com.thezayin.core.R.color.black),
                     fontSize = 16.sp,
