@@ -23,9 +23,8 @@ fun FetchOrdersList(
             .fillMaxSize()
             .padding(top = 10.dp),
     ) {
-        items(list.size, key = {
-            list[it].orderDateTime.toString()
-        }) { position ->
+        val sortedList = list.sortedByDescending { it.orderDateTime}
+        items(sortedList.size) { position ->
             FetchOrdersDetails(
                 order = list[position],
                 callBack = { callBack(it) },

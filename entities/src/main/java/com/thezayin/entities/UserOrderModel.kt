@@ -1,5 +1,7 @@
 package com.thezayin.entities
 
+import com.google.firebase.Timestamp
+
 
 data class UserOrderModel(
     val id: String? = null,
@@ -13,7 +15,7 @@ data class UserOrderModel(
     val message: String? = null,
     val orderDate: String? = null,
     val orderTime: String? = null,
-    val orderDateTime: String? = null,
+    val orderDateTime: Timestamp? = null,
     val orderStatus: String? = null,
     val paymentMethod: String? = null,
     val totalAmount: String? = null,

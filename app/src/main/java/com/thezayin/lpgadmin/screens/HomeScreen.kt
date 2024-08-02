@@ -65,9 +65,6 @@ fun HomeScreen(navigator: DestinationsNavigator) {
     Scaffold(
         modifier = Modifier.navigationBarsPadding(),
         containerColor = colorResource(id = com.thezayin.core.R.color.semi_transparent),
-        topBar = {
-            AdminHomeTopBar(modifier = Modifier, backClick = {})
-        },
     ) { padding ->
 
         Column(modifier = Modifier.padding(padding)) {
